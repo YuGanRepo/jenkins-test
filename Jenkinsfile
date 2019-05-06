@@ -7,7 +7,7 @@ pipeline{
 
   stages {
 
-      stage('Fetch Code'){
+     /* stage('Fetch Code'){
           steps {
               echo "start fetch code from git:${REPOSITORY}"
               // 清空当前目录
@@ -18,7 +18,7 @@ pipeline{
               // sh 'docker stop $(docker ps -a -q)'
               // sh 'docker rm $(docker ps -a -q)'
           }
-      }
+      } */
 
       stage('Maven 构建'){
           steps {
