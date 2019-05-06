@@ -1,6 +1,16 @@
 pipeline {
   agent any
   stages {
+    stage('SonarQube Analysis') {
+      steps {
+        script {
+          scannerHome = tool 'SonarQube Scanner'
+        }
+        withSonarQubeEnv('SonarQube') {
+          sh "${scannerHome}/bin/sonar-scanner sonar.projectKey=test sonar.sources=."
+        }
+      }
+    }
     stage('Maven Build') {
       steps {
         echo 'start maven compile'
