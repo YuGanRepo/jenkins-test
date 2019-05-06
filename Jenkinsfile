@@ -7,7 +7,7 @@ pipeline {
           scannerHome = tool 'SonarQube Scanner'
         }
         withSonarQubeEnv('SonarQube') {
-          sh "${scannerHome}/bin/sonar-scanner sonar.projectKey=test sonar.sources=."
+          sh "${scannerHome}/bin/sonar-scanner sonar.projectKey=test"
         }
       }
     }
