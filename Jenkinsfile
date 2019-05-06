@@ -20,18 +20,20 @@ pipeline{
           }
       } */
 
-      stage('Maven 构建'){
+      stage('Maven Build'){
           steps {
               echo "start maven compile"
+              sh 'mvn -Dmaven.test.skip=true -U clean install'
               // 切换目录
+            
               /* dir('demo') {
                   // 重新打包
-                  sh 'mvn -Dmaven.test.skip=true -U clean install'
+                  
               } */
           }
       }
 
-      stage('构建镜像'){
+      stage('Docker Build'){
           steps {
               echo "start build image"
               /* dir('demo') {
@@ -45,7 +47,7 @@ pipeline{
           }
       }
 
-      stage('启动服务'){
+      stage('Start Service'){
           steps {
               echo "start demo"
               // 部署服务
