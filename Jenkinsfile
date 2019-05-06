@@ -24,24 +24,24 @@ pipeline{
           steps {
               echo "start maven compile"
               // 切换目录
-              dir('demo') {
+              /* dir('demo') {
                   // 重新打包
                   sh 'mvn -Dmaven.test.skip=true -U clean install'
-              }
+              } */
           }
       }
 
       stage('构建镜像'){
           steps {
               echo "start build image"
-              dir('demo') {
+              /* dir('demo') {
                   // build镜像
                   sh 'docker build -t 192.168.6.128:5000/jenkins-test:1.0 .'
                   // 登录镜像仓库
                   // sh 'docker login -u your_username -p your_password'
                   // 推送镜像到镜像仓库
                   sh 'docker push 192.168.6.128:5000/jenkins-test:1.0'
-              }
+              } */
           }
       }
 
@@ -49,7 +49,7 @@ pipeline{
           steps {
               echo "start demo"
               // 部署服务
-              sh 'docker run -d -p 8888:8888 --name=demo 192.168.6.128:5000/jenkins-test:1.0'
+             // sh 'docker run -d -p 8888:8888 --name=demo 192.168.6.128:5000/jenkins-test:1.0'
           }
       }
 
