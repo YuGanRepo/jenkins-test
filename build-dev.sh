@@ -10,7 +10,7 @@ IMAGE_NAME=${IMAGE_PRFIX}:${TIME}_${GIT_REVISION}
 
 docker build -t ${IMAGE_NAME} .
 
-docker rm -f $(docker ps -a |  grep "${IMAGE_PRFIX}*"  | awk '{print $1}')
-
-docker run -d --name ${IMAGE_PRFIX} -p 8090:8080 ${MODULE}
+#docker rm -f $(docker ps -a |  grep "${IMAGE_PRFIX}*"  | awk '{print $1}')
+# docker run -d --name jk-test -p 8090:8080 hub.yucloud.org/micro-service/jenkins-test:201905071940_b6e75f
+docker run -d --name ${MODULE} -p 8090:8080 ${IMAGE_NAME}
 
