@@ -12,5 +12,5 @@ docker build -t ${IMAGE_NAME} .
 
 docker rm -f $(docker ps -a |  grep "${IMAGE_PRFIX}*"  | awk '{print $1}')
 
-docker run -d --name ${IMAGE_PRFIX} -p 8090:8080 ${IMAGE_NAME}
+docker run -d --name ${IMAGE_PRFIX} -p 8090:8080 ${MODULE}
 
