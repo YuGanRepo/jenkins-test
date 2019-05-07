@@ -8,14 +8,9 @@ IMAGE_NAME=${IMAGE_PRFIX}:${TIME}_${GIT_REVISION}
 
 # cd ${MODULE}
 
-docker build -t ${IMAGE_NAME} .
+docker build -t "${IMAGE_NAME}" .
 
 docker rm -f $(docker ps -a |  grep "${IMAGE_PRFIX}*"  | awk '{print $1}')
 
-docker run -d --name ${IMAGE_PRFIX} -p 8090:8080 IMAGE_NAME
+docker run -d --name "${IMAGE_PRFIX}" -p 8090:8080 IMAGE_NAME
 
-# docker push ${IMAGE_NAME}
-
-# docker rmi ${IMAGE_NAME}
-
-# echo "${IMAGE_NAME}" > IMAGE_NAME 
