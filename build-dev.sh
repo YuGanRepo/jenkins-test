@@ -11,6 +11,15 @@ IMAGE_NAME=${IMAGE_PRFIX}:${TIME}_${GIT_REVISION}
 docker build -t ${IMAGE_NAME} .
 
 #docker rm -f $(docker ps -a |  grep "${IMAGE_PRFIX}*"  | awk '{print $1}')
+
+docker ps | grep jenkins-test &> /dev/null
+if [ $? -ne 0 ]
+then
+ echo "no runtime image"
+else
+ docker rm -f ${MODULE}
+fi
+
 # docker run -d --name jk-test -p 8090:8080 hub.yucloud.org/micro-service/jenkins-test:201905071940_b6e75f
 docker run -d --name ${MODULE} -p 8090:8080 ${IMAGE_NAME}
 
