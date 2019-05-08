@@ -18,8 +18,10 @@ then
  echo "no runtime image"
 else
  docker rm -f ${MODULE}
+ echo "remove old image successfull"
 fi
 
 # docker run -d --name jk-test -p 8090:8080 hub.yucloud.org/micro-service/jenkins-test:201905071940_b6e75f
 docker run -d --name ${MODULE} -p 8090:8080 ${IMAGE_NAME}
 
+# docker rmi $(docker images | grep "jenkins-test" | grep -v "201905072324_9f44279" | awk '{print $3}')
