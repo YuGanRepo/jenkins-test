@@ -16,7 +16,7 @@ public class HelloController {
 
   @GetMapping("/hello")
   public String hello() {
-    return "hello world from cicd";
+    return "hello world from cicd by kubernetes";
   }
 
 }
